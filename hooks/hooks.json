@@ -1,0 +1,21 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/crosstalk.py\" hook session-start", "timeout": 10 } ] }
+    ],
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/crosstalk.py\" hook prompt", "timeout": 10 } ] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [ { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/crosstalk.py\" hook pre-edit", "timeout": 10 } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [ { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/crosstalk.py\" hook post-edit", "timeout": 10 } ] }
+    ],
+    "SessionEnd": [
+      { "hooks": [ { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/crosstalk.py\" hook session-end", "timeout": 10 } ] }
+    ]
+  }
+}

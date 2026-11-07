@@ -1,0 +1,19 @@
+{
+  "name": "crosstalk",
+  "version": "0.1.0",
+  "description": "A live shared brain for parallel Claude Code sessions: each terminal knows what the others are doing, editing and deciding, and overlapping edits get flagged before they happen.",
+  "author": {
+    "name": "yasirusman85",
+    "url": "https://github.com/yasirusman85"
+  },
+  "license": "MIT",
+  "keywords": [
+    "memory",
+    "multi-session",
+    "parallel",
+    "coordination",
+    "hooks"
+  ],
+  "homepage": "https://github.com/yasirusman85/crosstalk",
+  "repository": "https://github.com/yasirusman85/crosstalk"
+}

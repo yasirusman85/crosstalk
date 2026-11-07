@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" width="880" height="360" role="img" aria-label="Pip, the crosstalk mascot, relaying messages between two terminal sessions">
+  <style><![CDATA[
+    .ink { stroke: #111; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .fill { fill: #111; }
+    .paper { fill: #fff; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #111; }
+    .t { font-size: 13px; }
+    .small { font-size: 11px; }
+    .title { font-size: 12px; font-weight: 700; }
+
+    /* Pip bobs gently */
+    .pip { animation: bob 2.4s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+    /* eyes glance left then right, in time with the messages */
+    .eyes { animation: glance 8s ease-in-out infinite; }
+    @keyframes glance {
+      0%, 8%   { transform: translateX(0); }
+      12%, 34% { transform: translateX(-9px); }
+      40%, 50% { transform: translateX(0); }
+      54%, 84% { transform: translateX(9px); }
+      90%,100% { transform: translateX(0); }
+    }
+    .eye { transform-box: fill-box; transform-origin: center; animation: blink 4s infinite; }
+    @keyframes blink { 0%, 46%, 50%, 100% { transform: scaleY(1); } 48% { transform: scaleY(0.1); } }
+
+    /* mouth: smile / talking "o" */
+    .smile { animation: smile 8s infinite; }
+    .talk  { animation: talk 8s infinite; }
+    @keyframes smile { 0%,18%,30%,62%,74%,100% { opacity: 1; } 20%,28%,64%,72% { opacity: 0; } }
+    @keyframes talk  { 0%,18%,30%,62%,74%,100% { opacity: 0; } 20%,28%,64%,72% { opacity: 1; } }
+
+    /* antenna pulse */
+    .ring { transform-box: fill-box; transform-origin: center; animation: ring 2s ease-out infinite; }
+    .ring2 { animation-delay: 1s; }
+    @keyframes ring { 0% { transform: scale(0.4); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
+
+    /* signal wires flow */
+    .wire { stroke: #111; stroke-width: 2.5; fill: none; stroke-dasharray: 2 9; stroke-linecap: round; animation: flow 1s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -22; } }
+
+    /* waving arms */
+    .armL { transform-origin: 382px 232px; animation: armL 8s ease-in-out infinite; }
+    .armR { transform-origin: 498px 232px; animation: armR 8s ease-in-out infinite; }
+    @keyframes armL { 0%,10%,34%,100% { transform: rotate(0); } 16%,28% { transform: rotate(28deg); } 22% { transform: rotate(14deg); } }
+    @keyframes armR { 0%,54%,80%,100% { transform: rotate(0); } 60%,72% { transform: rotate(-28deg); } 66% { transform: rotate(-14deg); } }
+
+    /* terminal lines type in */
+    .line { opacity: 0; animation: type 8s steps(1) infinite; }
+    @keyframes type { 0% { opacity: 0; } 100% { opacity: 1; } }
+    .a1 { animation-name: a1; } .a2 { animation-name: a2; } .a3 { animation-name: a3; }
+    .b1 { animation-name: b1; } .b2 { animation-name: b2; } .b3 { animation-name: b3; }
+    @keyframes a1 { 0%, 2%  { opacity: 0; } 3%, 96%  { opacity: 1; } 97%,100% { opacity: 0; } }
+    @keyframes a2 { 0%, 9%  { opacity: 0; } 10%, 96% { opacity: 1; } 97%,100% { opacity: 0; } }
+    @keyframes a3 { 0%, 70% { opacity: 0; } 71%, 96% { opacity: 1; } 97%,100% { opacity: 0; } }
+    @keyframes b1 { 0%, 5%  { opacity: 0; } 6%, 96%  { opacity: 1; } 97%,100% { opacity: 0; } }
+    @keyframes b2 { 0%, 26% { opacity: 0; } 27%, 96% { opacity: 1; } 97%,100% { opacity: 0; } }
+    @keyframes b3 { 0%, 44% { opacity: 0; } 45%, 96% { opacity: 1; } 97%,100% { opacity: 0; } }
+
+    /* speech bubbles */
+    .bubL { opacity: 0; animation: bubL 8s infinite; }
+    .bubR { opacity: 0; animation: bubR 8s infinite; }
+    @keyframes bubL { 0%,17% { opacity: 0; transform: translateY(6px); } 20%,34% { opacity: 1; transform: translateY(0); } 38%,100% { opacity: 0; } }
+    @keyframes bubR { 0%,61% { opacity: 0; transform: translateY(6px); } 64%,80% { opacity: 1; transform: translateY(0); } 84%,100% { opacity: 0; } }
+
+    .cursor { animation: cur 1s steps(1) infinite; }
+    @keyframes cur { 50% { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .line { opacity: 1; }
+    }
+  ]]></style>
+
+  <!-- card -->
+  <rect x="2" y="2" width="876" height="356" rx="20" class="paper" stroke="#111" stroke-width="3"/>
+
+  <!-- left terminal -->
+  <g>
+    <rect x="34" y="62" width="250" height="196" rx="12" class="paper" stroke="#111" stroke-width="3"/>
+    <line x1="34" y1="92" x2="284" y2="92" stroke="#111" stroke-width="3"/>
+    <circle cx="54" cy="77" r="5" class="ink" stroke-width="2.5"/>
+    <circle cx="71" cy="77" r="5" class="ink" stroke-width="2.5"/>
+    <circle cx="88" cy="77" r="5" class="fill"/>
+    <text x="270" y="82" text-anchor="end" class="mono title">terminal 1 · otter</text>
+    <text x="50" y="120" class="mono t line a1">&gt; fix the login bug</text>
+    <text x="50" y="144" class="mono t line a2">✎ src/auth.py</text>
+    <text x="50" y="176" class="mono small line a3">⇠ heron: "added dark</text>
+    <text x="50" y="192" class="mono small line a3">   mode in src/ui.css"</text>
+    <rect x="50" y="226" width="9" height="15" class="fill cursor"/>
+  </g>
+
+  <!-- right terminal -->
+  <g>
+    <rect x="596" y="62" width="250" height="196" rx="12" class="paper" stroke="#111" stroke-width="3"/>
+    <line x1="596" y1="92" x2="846" y2="92" stroke="#111" stroke-width="3"/>
+    <circle cx="616" cy="77" r="5" class="ink" stroke-width="2.5"/>
+    <circle cx="633" cy="77" r="5" class="fill"/>
+    <circle cx="650" cy="77" r="5" class="ink" stroke-width="2.5"/>
+    <text x="832" y="82" text-anchor="end" class="mono title">terminal 2 · heron</text>
+    <text x="612" y="120" class="mono t line b1">&gt; add dark mode</text>
+    <text x="612" y="152" class="mono small line b2">⇠ otter is editing</text>
+    <text x="612" y="168" class="mono small line b2">   src/auth.py</text>
+    <text x="612" y="200" class="mono t line b3">✎ src/ui.css</text>
+    <rect x="612" y="226" width="9" height="15" class="fill cursor"/>
+  </g>
+
+  <!-- signal wires: terminals to antenna -->
+  <path id="wireL" class="wire" d="M284 160 C 340 160, 360 70, 440 70"/>
+  <path id="wireR" class="wire" d="M440 70 C 520 70, 540 160, 596 160"/>
+
+  <!-- message packets riding the wires -->
+  <circle r="6" class="fill">
+    <animateMotion dur="8s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.12;0.2;1" calcMode="linear">
+      <mpath href="#wireL"/>
+    </animateMotion>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.12;0.2;0.21;1"/>
+  </circle>
+  <circle r="6" class="fill">
+    <animateMotion dur="8s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;0.2;0.27;1" calcMode="linear">
+      <mpath href="#wireR"/>
+    </animateMotion>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.2;0.201;0.27;0.28;1"/>
+  </circle>
+  <rect x="-7" y="-7" width="14" height="14" rx="3" class="paper" stroke="#111" stroke-width="3">
+    <animateMotion dur="8s" repeatCount="indefinite" keyPoints="1;1;0;0" keyTimes="0;0.56;0.64;1" calcMode="linear">
+      <mpath href="#wireR"/>
+    </animateMotion>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.56;0.561;0.64;0.65;1"/>
+  </rect>
+  <rect x="-7" y="-7" width="14" height="14" rx="3" class="paper" stroke="#111" stroke-width="3">
+    <animateMotion dur="8s" repeatCount="indefinite" keyPoints="1;1;0;0" keyTimes="0;0.64;0.71;1" calcMode="linear">
+      <mpath href="#wireL"/>
+    </animateMotion>
+    <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.64;0.641;0.71;0.72;1"/>
+  </rect>
+
+  <!-- Pip -->
+  <g class="pip">
+    <!-- antenna -->
+    <line x1="440" y1="150" x2="440" y2="82" class="ink"/>
+    <circle cx="440" cy="70" r="10" class="fill"/>
+    <circle cx="440" cy="70" r="10" class="ink ring" stroke-width="2"/>
+    <circle cx="440" cy="70" r="10" class="ink ring ring2" stroke-width="2"/>
+
+    <!-- arms -->
+    <path class="ink armL" d="M382 232 Q 360 236 348 218" stroke-width="4"/>
+    <path class="ink armR" d="M498 232 Q 520 236 532 218" stroke-width="4"/>
+
+    <!-- feet -->
+    <path class="fill" d="M410 298 q 0 -12 14 -12 q 10 0 10 12 z"/>
+    <path class="fill" d="M446 298 q 0 -12 10 -12 q 14 0 14 12 z"/>
+
+    <!-- body -->
+    <path class="paper" stroke="#111" stroke-width="4" d="M440 148 C 492 148, 512 190, 508 238 C 505 276, 480 292, 440 292 C 400 292, 375 276, 372 238 C 368 190, 388 148, 440 148 Z"/>
+    <!-- belly screen -->
+    <rect x="414" y="246" width="52" height="28" rx="7" class="ink" stroke-width="3"/>
+    <text x="440" y="266" text-anchor="middle" class="mono" font-size="13" font-weight="700">&lt;/&gt;</text>
+
+    <!-- face -->
+    <g class="eyes">
+      <ellipse class="eye fill" cx="420" cy="202" rx="8" ry="11"/>
+      <ellipse class="eye fill" cx="460" cy="202" rx="8" ry="11"/>
+      <circle cx="423" cy="198" r="2.6" class="paper"/>
+      <circle cx="463" cy="198" r="2.6" class="paper"/>
+    </g>
+    <path class="ink smile" d="M428 226 Q 440 236 452 226" stroke-width="3.5"/>
+    <ellipse class="talk paper" cx="440" cy="229" rx="6" ry="7" stroke="#111" stroke-width="3.5"/>
+    <!-- blush marks -->
+    <line x1="396" y1="222" x2="404" y2="218" class="ink" stroke-width="2.5"/>
+    <line x1="476" y1="218" x2="484" y2="222" class="ink" stroke-width="2.5"/>
+  </g>
+
+  <!-- speech bubbles -->
+  <g class="bubL">
+    <path class="paper" stroke="#111" stroke-width="3" d="M170 286 h 116 a 10 10 0 0 1 10 10 v 22 a 10 10 0 0 1 -10 10 h -116 a 10 10 0 0 1 -10 -10 v -22 a 10 10 0 0 1 10 -10 z"/>
+    <text x="228" y="312" text-anchor="middle" class="mono t" font-weight="700">heads up, heron!</text>
+  </g>
+  <g class="bubR">
+    <path class="paper" stroke="#111" stroke-width="3" d="M594 286 h 116 a 10 10 0 0 1 10 10 v 22 a 10 10 0 0 1 -10 10 h -116 a 10 10 0 0 1 -10 -10 v -22 a 10 10 0 0 1 10 -10 z"/>
+    <text x="652" y="312" text-anchor="middle" class="mono t" font-weight="700">got it, otter!</text>
+  </g>
+
+</svg>
